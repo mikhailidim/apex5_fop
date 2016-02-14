@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Apache FOP Servlet</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Apache FOP Servlet</h1>
+     <hr/>
+     <h2>Purpose</h2>
+     <div style="padding: 5px; margin-bottom: 15px;">
+This servlet created to work with APEX Reports and produce PDF documents from XML and XSLT templates.
+Servlet accepts two parameters.
+     </div>
+     <table style=" width: 70%;" >
+         <thead style="background: antiquewhite;">
+          <th style="font-weight: bolder; border-width: 2px;border-style: solid; border-color: peru;">Parameter name</th>
+          <th style="font-weight: bolder; border-width: 2px;border-style: solid; border-color: peru; width: 70%">Parameter description</th>
+         </thead>
+         <tbody style="background: cornsilk;">
+         <tr >
+             <td style="font-weight: bold;">xml</td>
+             <td>Data in XML format to be printed</td>
+         </tr>
+         <tr>
+             <td style="font-weight: bold;">template</td>
+             <td>XSLT template to generate XSL-FO document</td>
+         </tr>
+         <tr>
+             <td style="font-weight: bold;">GET Call</td>
+             <td > <font style="font-style: italic;"><script>document.write(location.href.substring(0, location.href.lastIndexOf("/")));</script>/pdf_print.jsp?xml=<...>&template=<...></font><p style="margin-top: 5px;"/>
+                  Parameter values are URL-encoded data.
+             </td>
+         </tr>
+     
+         <tr>
+             <td style="font-weight: bold;">POST Call</td>
+             <td> Parameter values are HTML-encoded. Click to <div id="form-div">
+                 <form method="POST" action="pdf_print.jsp" id="fop">
+                     <input type="hidden" name="xml" value="&lt;text&gt;FOP Servlet works  as expected&lt;/text&gt;"/>
+                     <input type="hidden" name="template" value="&lt;xsl:stylesheet version='1.0' xmlns:xsl='http://www.w3.org/1999/XSL/Transform' xmlns:fo='http://www.w3.org/1999/XSL/Format'&gt;&lt;xsl:template match=&quot;*&quot;&gt;&lt;fo:root&gt;&lt;fo:layout-master-set&gt;&lt;fo:simple-page-master master-name=&quot;main&quot; page-height=&quot;12cm&quot; page-width=&quot;20cm&quot; margin-top=&quot;2cm&quot; margin-bottom=&quot;2cm&quot; margin-left=&quot;2cm&quot; margin-right=&quot;2cm&quot;&gt;&lt;fo:region-body margin-top=&quot;0cm&quot;/&gt;&lt;fo:region-before extent=&quot;0cm&quot;/&gt;&lt;fo:region-after extent=&quot;0cm&quot;/&gt;&lt;/fo:simple-page-master&gt;&lt;/fo:layout-master-set&gt;&lt;fo:page-sequence master-reference=&quot;main&quot;&gt;&lt;fo:flow flow-name=&quot;xsl-region-body&quot;&gt;&lt;fo:block font-size=&quot;18pt&quot;&gt;Congratulations!&lt;/fo:block&gt;&lt;fo:block font-size=&quot;12pt&quot;&gt;&lt;xsl:copy-of select=&quot;./text()&quot;/&gt;&lt;/fo:block&gt;&lt;/fo:flow&gt;&lt;/fo:page-sequence&gt;&lt;/fo:root&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;"/>                          
+                     <a href="#" onclick="document.getElementById('fop').submit();"> test servelt</a>
+                 </form>
+         </div>
+
+             </td>
+             
+         </tr> 
+     </tbody>
+     </table>
+    </body>
+</html>
