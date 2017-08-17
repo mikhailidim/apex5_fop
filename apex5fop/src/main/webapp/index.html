@@ -1,0 +1,61 @@
+<html>
+<body style="
+    width: 85%;
+    background: ghostwhite;
+">
+  <div style="padding: 5px;margin-bottom: 15px;background: white;">  
+    <h1 style="
+    font-family: sans-serif;
+">Apache FOP Servlet</h1>
+
+<br/>This servlet has been developed as the replacement for the original Oracle FOP servlet for Apex reports.<br/> 
+    It could be configured with Oracle Apex 5 Reports and to generate PDF documents from the XML data and XSLT templates. <br/>
+    Servlet accepts two parameters. as in the table below. <br/><br/>
+<table style="
+    width: 95%;
+    border-spacing: 0;
+">
+<thead style="background: darkblue;">
+<tr>
+<td style="color: smokewhite; font-weihgt: bold;"><strong><span style="color: #ffffff;">Parameter name</span></strong></td>
+<td><strong><span style="color: #ffffff;">Parameter description</span></strong></td>
+</tr>
+</thead>
+<tbody style="background: AliceBlue;">
+<tr>
+<td style="font-weight: bold;">xml</td>
+<td>Data in XML format to be printed</td>
+</tr>
+<tr>
+<td style="font-weight: bold;">template</td>
+<td>XSLT template to generate XSL-FO document</td>
+</tr>
+<tr style="
+    background: white;"><td colspan="2" style="padding-left: 5;margin-top: 10px;margin-bottom: 10px">Servlet requests</td></tr>
+<tr>
+    <td style="font-weight: bold;">GET<br/><span style="font-weight: normal">(Values are URL-encoded)</span></td>
+<td ><span style="font-style: italic;">
+<script>
+document.write(location.href.substring(0, location.href.lastIndexOf("/")));
+</script>/pdf_print.jsp?xml=&#8230;&template=&#8230;</span>
+<p style="margin-top: 5px;"></p>
+</td>
+</tr>
+<tr>
+<td style="font-weight: bold;">POST<br/><span style="font-weight: normal">(Values are HTML-encoded)</span></td>
+<td>Click link to  <div id="form-div" style="display: inline-block;">
+                 <form method="POST" action="pdf_print.jsp" id="fop">
+                     <input type="hidden" name="xml" value="&lt;text&gt;FOP Servlet works  as expected&lt;/text&gt;"/>
+                     <input type="hidden" name="template" value="&lt;xsl:stylesheet version='1.0' xmlns:xsl='http://www.w3.org/1999/XSL/Transform' xmlns:fo='http://www.w3.org/1999/XSL/Format'&gt;&lt;xsl:template match=&quot;*&quot;&gt;&lt;fo:root&gt;&lt;fo:layout-master-set&gt;&lt;fo:simple-page-master master-name=&quot;main&quot; page-height=&quot;12cm&quot; page-width=&quot;20cm&quot; margin-top=&quot;2cm&quot; margin-bottom=&quot;2cm&quot; margin-left=&quot;2cm&quot; margin-right=&quot;2cm&quot;&gt;&lt;fo:region-body margin-top=&quot;0cm&quot;/&gt;&lt;fo:region-before extent=&quot;0cm&quot;/&gt;&lt;fo:region-after extent=&quot;0cm&quot;/&gt;&lt;/fo:simple-page-master&gt;&lt;/fo:layout-master-set&gt;&lt;fo:page-sequence master-reference=&quot;main&quot;&gt;&lt;fo:flow flow-name=&quot;xsl-region-body&quot;&gt;&lt;fo:block font-size=&quot;18pt&quot;&gt;Congratulations!&lt;/fo:block&gt;&lt;fo:block font-size=&quot;12pt&quot;&gt;&lt;xsl:copy-of select=&quot;./text()&quot;/&gt;&lt;/fo:block&gt;&lt;/fo:flow&gt;&lt;/fo:page-sequence&gt;&lt;/fo:root&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;"/>                          
+                     <a href="#" onclick="document.getElementById('fop').submit();"> test servelt</a>
+                 </form>
+         </div>
+</td>
+</tr>
+</tbody>
+</table>
+    <hr style="width: 95%; color: activecaption"/>
+    <div>Special thanks to <a href="https://github.com/RogerPilkey">Roger Pilkey</a>, who has adapted the JSP code to FOP 2.2 </div>    
+</div>
+</body>
+</html>
